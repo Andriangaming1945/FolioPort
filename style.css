@@ -71,6 +71,7 @@ html{
     flex-flow: column;
     transition: .2s linear !important;
     text-align: center;
+    z-index: 1000;
    
  }
 
@@ -160,9 +161,9 @@ html{
  }
 
  #menu-btn{
-    position: absolute;
-    top: 0;
-    right: -5.5rem;
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
     height: 4.5rem;
     line-height: 4.5rem;
     width: 5rem;
@@ -170,6 +171,7 @@ html{
     cursor: pointer;
     background-color: var(--black);
     color: var(--white);
+    z-index: 1001;
  }
 
  .progress .bar span{
@@ -194,10 +196,17 @@ html{
     min-height: 100vh;
 }
 
+.home .image{
+    flex: 1 1 40rem;
+}
+
 .home .image img{
     height: 65rem;
+    width: 100%;
+    max-width: 100%;
     padding: 1%;
     border: var(--border-bold);
+    object-fit: cover;
 }
 
  .home .content{
@@ -361,7 +370,7 @@ html{
 
 .service .box-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minimax(30rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap: 1.5rem;
     align-items: flex-start;
 
@@ -412,7 +421,7 @@ html{
  
  .portfolio .box-container .box img{
     height: 30rem;
-    width: 95%;
+    width: 100%;
     object-fit: cover;
  }
  
@@ -439,13 +448,13 @@ html{
     object-fit: cover;
  }
 
- .portofolio .box-container .box h2{
+ .project .box-container .box h2{
     font-weight: normal;
     font-size: 2rem;
     margin: 1rem 0;
  }
 
- .portofolio .box-container .box span{
+ .project .box-container .box span{
     font-size: 1.7rem;
  }
 
@@ -467,7 +476,7 @@ html{
 
  .contact form .flex{
     display: flex;
-    flex-wrap: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
  }
 
@@ -531,7 +540,7 @@ html{
 
  
 
-/*Media*/
+/*Media Queries untuk Responsive Design*/
 
 @media (max-width: 991px){
     html{
@@ -541,6 +550,67 @@ html{
     body.active{
         padding-left: 0;
     }
+
+    #menu-btn{
+        display: block;
+    }
+
+    .home{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home .image{
+        margin-bottom: 2rem;
+    }
+
+    .home .image img{
+        height: 50rem;
+        width: 90%;
+    }
+
+    .about .edu-exp .row{
+        flex-direction: column;
+    }
+
+    .contact form .flex{
+        flex-direction: column;
+    }
+
+    .contact form .flex .box{
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px){
+    html{
+        font-size: 52%;
+    }
+
+    .heading span{
+        font-size: 5rem;
+    }
+
+    .home .image img{
+        height: 45rem;
+        width: 95%;
+    }
+
+    .service .box-container{
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+
+    .portfolio .box-container{
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+
+    .project .box-container{
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+
+    .contact .box-container{
+        grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
 }
 
 @media (max-width: 450px){
@@ -548,16 +618,170 @@ html{
         font-size: 50%;
     }
 
-    .header.active{
-        padding-top: 7rem;
+    .header{
+        width: 100%;
+        left: -100%;
     }
 
-    #menu-btn.fa-times{
-        right: 0;
+    .header.active{
+        padding-top: 7rem;
+        left: 0;
     }
+
+    #menu-btn{
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+    }
+
+    body.active #menu-btn{
+        left: auto;
+        right: 2rem;
+    }
+
+    body.active{
+        padding-left: 0;
+    }
+
+    .heading span{
+        font-size: 4rem;
+    }
+
+    .home{
+        padding: 2rem 1rem;
+        margin-top: 6rem;
+    }
+
     .home .image img{
         height: auto;
         width: 100%;
+        max-height: 40rem;
+    }
+
+    .home .content h3{
+        font-size: 3.5rem;
+    }
+
+    .home .content span{
+        font-size: 2rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .home .content p{
+        font-size: 1.6rem;
+    }
+
+    .about .biografi .bio h3{
+        font-size: 1.6rem;
+        padding: 0.8rem 1.5rem;
+        margin: 0.5rem;
+        word-break: break-word;
+    }
+
+    .about .skills .progress .bar h3{
+        font-size: 1.6rem;
+        padding: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .about .edu-exp .row .box-container .title{
+        font-size: 2.5rem;
+    }
+
+    .about .edu-exp .row .box-container .box{
+        padding: 1.5rem;
+    }
+
+    .about .edu-exp .row .box-container .box span{
+        font-size: 1.6rem;
+    }
+
+    .about .edu-exp .row .box-container .box h3{
+        font-size: 2rem;
+    }
+
+    .about .edu-exp .row .box-container .box p{
+        font-size: 1.5rem;
+    }
+
+    .service .box-container{
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .service .box-container .box{
+        padding: 2rem 1.5rem;
+    }
+
+    .portfolio .box-container{
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .portfolio .box-container .box img{
+        height: 25rem;
+    }
+
+    .project .box-container{
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .project .box-container .box img{
+        height: 25rem;
+    }
+
+    .contact form .box{
+        font-size: 1.6rem;
+        padding: 1.2rem;
+    }
+
+    .contact .box-container{
+        grid-template-columns: 1fr;
+    }
+
+    .contact .box-container .box{
+        padding: 2rem 1.5rem;
+    }
+
+    .message{
+        font-size: 1.6rem;
+        padding: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    section{
+        padding: 2rem 1rem;
     }
 }
 
+@media (max-width: 375px){
+    html{
+        font-size: 45%;
+    }
+
+    .header .logo{
+        font-size: 3.5rem;
+    }
+
+    .header .navbar a{
+        font-size: 2rem;
+    }
+
+    .heading span{
+        font-size: 3.5rem;
+    }
+
+    .home .content h3{
+        font-size: 3rem;
+    }
+
+    .about .biografi .bio h3{
+        font-size: 1.4rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .home .image img{
+        max-height: 35rem;
+    }
+}
